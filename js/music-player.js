@@ -38,17 +38,17 @@ function playTrack(index) {
     audio.src = musicFiles[index].url;
     audio.play();
     isPlaying = true;
-    document.getElementById('playBtn').textContent = '⏸';
+    document.getElementById('playBtn').textContent = '〓';
     document.getElementById('now-playing').textContent = `♪ ${musicFiles[index].title}`;
 }
 
 function togglePlay() {
     if (isPlaying) {
         audio.pause();
-        document.getElementById('playBtn').textContent = '▶';
+        document.getElementById('playBtn').textContent = '⏵';
     } else {
         audio.play();
-        document.getElementById('playBtn').textContent = '⏸';
+        document.getElementById('playBtn').textContent = '〓';
     }
     isPlaying = !isPlaying;
 }
