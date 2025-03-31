@@ -118,7 +118,145 @@
               <li class="navigation__item"><a href="https://myip.233boy.eu.org" title="link to IP"><i class="fa-solid fa-link"></i>&nbsp;IP查询</a></li>
             </ul>
           </nav>
+          <!-- 播放器容器 -->
+<div class="video-player-container">
+    <video id="customVideoPlayer" class="video-js">
+        <source src="https://alist.ikun.su/115/%E9%9F%B3%E4%B9%90%E7%B4%A2%E5%BC%95/%E6%B4%8B%E6%BE%9C%E4%B8%80/%E6%B4%8B%E6%BE%9C%E4%B8%80-%E8%B0%81.flac" type="audio/flac">
+        Your browser does not support the video tag.
+    </video>
+    
+    <!-- 自定义控制栏 -->
+    <div class="custom-controls">
+        <button class="play-btn">▶</button>
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <div class="time-display">
+            <span class="current-time">0:00</span> / 
+            <span class="duration">0:00</span>
+        </div>
+        <button class="mute-btn">🔊</button>
+        <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="1">
+        <button class="fullscreen-btn">⤢</button>
+    </div>
+</div>
 
+<style>
+.video-player-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    background: #000;
+}
+
+.video-js {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+}
+
+.custom-controls {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.play-btn, .mute-btn, .fullscreen-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.progress-bar {
+    flex-grow: 1;
+    height: 5px;
+    background: #444;
+    margin: 0 15px;
+    cursor: pointer;
+}
+
+.progress {
+    height: 100%;
+    background: #00ff00;
+    width: 0%;
+}
+
+.volume-slider {
+    width: 80px;
+    margin: 0 10px;
+}
+
+.time-display {
+    font-family: monospace;
+    margin: 0 10px;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const video = document.getElementById('customVideoPlayer');
+    const playBtn = document.querySelector('.play-btn');
+    const progress = document.querySelector('.progress');
+    const volumeSlider = document.querySelector('.volume-slider');
+    const muteBtn = document.querySelector('.mute-btn');
+    const timeDisplay = document.querySelectorAll('.time-display span');
+
+    // 播放/暂停控制
+    playBtn.addEventListener('click', () => {
+        video.paused ? video.play() : video.pause();
+    });
+
+    video.addEventListener('play', () => playBtn.textContent = '⏸');
+    video.addEventListener('pause', () => playBtn.textContent = '▶');
+
+    // 进度条控制
+    video.addEventListener('timeupdate', () => {
+        const percent = (video.currentTime / video.duration) * 100;
+        progress.style.width = `${percent}%`;
+        timeDisplay[0].textContent = formatTime(video.currentTime);
+        timeDisplay[1].textContent = formatTime(video.duration);
+    });
+
+    document.querySelector('.progress-bar').addEventListener('click', (e) => {
+        const rect = e.target.getBoundingClientRect();
+        const pos = (e.clientX - rect.left) / rect.width;
+        video.currentTime = pos * video.duration;
+    });
+
+    // 音量控制
+    volumeSlider.addEventListener('input', (e) => {
+        video.volume = e.target.value;
+        muteBtn.textContent = video.volume === 0 ? '🔇' : '🔊';
+    });
+
+    muteBtn.addEventListener('click', () => {
+        video.muted = !video.muted;
+        muteBtn.textContent = video.muted ? '🔇' : '🔊';
+    });
+
+    // 全屏控制
+    document.querySelector('.fullscreen-btn').addEventListener('click', () => {
+        if (video.requestFullscreen) {
+            video.requestFullscreen();
+        }
+    });
+
+    // 时间格式化
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        seconds = Math.floor(seconds % 60);
+        return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    }
+});
+</script>
         </div>
 
       </div>
