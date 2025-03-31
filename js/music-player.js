@@ -57,54 +57,5 @@ document.getElementById('playerContainer').addEventListener('touchend', (e) => {
     audio.onended = nextTrack;
 }
 
-// 播放控制方法
-function playTrack(index) {
-    currentTrack = index;
-    audio.src = musicFiles[index].url;
-    audio.play();
-    isPlaying = true;
-    document.getElementById('playBtn').textContent = '〓';
-    document.getElementById('now-playing').textContent = `♪ ${musicFiles[index].title}`;
-}
-
-function togglePlay() {
-    if (isPlaying) {
-        audio.pause();
-        document.getElementById('playBtn').textContent = '⏵';
-    } else {
-        audio.play();
-        document.getElementById('playBtn').textContent = '〓';
-    }
-    isPlaying = !isPlaying;
-}
-
-function nextTrack() {
-    currentTrack = (currentTrack + 1) % musicFiles.length;
-    playTrack(currentTrack);
-}
-
-function previousTrack() {
-    currentTrack = (currentTrack - 1 + musicFiles.length) % musicFiles.length;
-    playTrack(currentTrack);
-}
-
-function setVolume(value) {
-    audio.volume = value;
-}
-
-// 在音频控制函数区域
-function toggleMute() {
-    audio.muted = !audio.muted;
-    document.getElementById('muteIcon').textContent = 
-        audio.muted ? '🔇' : '🔊';
-}
-
-// 初始化时同步状态
-function initPlayer() {
-    // 已有初始化代码...
-    document.getElementById('muteIcon').textContent = 
-        audio.muted ? '🔇' : '🔊';
-}
-
 // 页面加载后初始化
 document.addEventListener('DOMContentLoaded', initPlayer);
