@@ -1,6 +1,5 @@
 // 配置音乐文件
 const musicFiles = [
-    { title: '示情 - 范文芳', url: '/music/范文芳 - 示情.mp3' },
     { title: '示情 - 范文芳', url: '/music/范文芳 - 示情.mp3' }
 ];
 
