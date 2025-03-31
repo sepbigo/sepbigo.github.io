@@ -101,23 +101,104 @@
 
             </ul>
           </nav>
-<!-- 在header.html中添加 -->
-<div class="glass-player">
-    <div class="player-controls">
-        <span id="now-playing" class="track-title"></span>
-        <div class="controls-group">
-            <button class="icon-btn" onclick="previousTrack()">◀</button>
-            <button class="icon-btn" id="playBtn" onclick="togglePlay()">▶</button>
-            <button class="icon-btn" onclick="nextTrack()">▶</button>
-            <input type="range" class="volume-slider" 
-                   min="0" max="1" step="0.1" 
-                   oninput="setVolume(this.value)">
+
+          <!-- 在header.html中添加以下结构 -->
+<div class="auto-hide-player" id="playerContainer">
+    <div class="player-content">
+        <span id="nowPlaying"></span>
+        <div class="controls">
+            <button class="ctrl-btn" onclick="previousTrack()">◀</button>
+            <button class="ctrl-btn" id="playButton" onclick="togglePlay()">▶</button>
+            <button class="ctrl-btn" onclick="nextTrack()">▶</button>
         </div>
     </div>
-    <div class="glass-progress" id="progress-container">
-        <div class="progress-fill" id="progress-bar"></div>
-    </div>
+    <div class="auto-progress" id="progressBar"></div>
 </div>
+
+<style>
+/* 初始可见的播放器样式 */
+.auto-hide-player {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    transition: opacity 0.5s ease;
+    z-index: 1000;
+}
+
+.auto-progress {
+    height: 2px;
+    background: #4CAF50;
+    width: 0%;
+    transition: width 0.2s linear;
+}
+
+/* 隐藏状态 */
+.player-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.ctrl-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    padding: 0 8px;
+}
+</style>
+
+<script>
+// 修改后的音乐播放逻辑
+let autoHideTimeout;
+
+function initAutoPlayer() {
+    // 初始化音频对象
+    const audio = new Audio(musicFiles[0].url);
+    
+    // 自动播放尝试
+    const playPromise = audio.play();
+    
+    if (playPromise !== undefined) {
+        playPromise.then(() => {
+            // 成功播放后启动隐藏倒计时
+            autoHideTimeout = setTimeout(() => {
+                document.getElementById('playerContainer').classList.add('player-hidden');
+            }, 2000); // 2秒后淡出
+        }).catch(error => {
+            console.log('自动播放被阻止，需要用户交互');
+            document.getElementById('playerContainer').classList.remove('player-hidden');
+        });
+    }
+
+    // 进度更新
+    audio.ontimeupdate = () => {
+        const progress = (audio.currentTime / audio.duration) * 100;
+        document.getElementById('progressBar').style.width = `${progress}%`;
+    };
+
+    // 鼠标移入显示控件
+    document.getElementById('playerContainer').addEventListener('mouseenter', () => {
+        clearTimeout(autoHideTimeout);
+        document.getElementById('playerContainer').classList.remove('player-hidden');
+    });
+
+    // 鼠标移出重新隐藏
+    document.getElementById('playerContainer').addEventListener('mouseleave', () => {
+        autoHideTimeout = setTimeout(() => {
+            document.getElementById('playerContainer').classList.add('player-hidden');
+        }, 1500);
+    });
+}
+
+// 页面加载后初始化
+window.addEventListener('load', initAutoPlayer);
+</script>
+
           <!--<nav class="cover-navigation cover-navigation--primary">-->
           <nav class="cover-navigation navigation--social">
             <ul class="navigation">
