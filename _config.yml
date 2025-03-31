@@ -10,11 +10,11 @@ font_awesome: 'XXXXXXXXXX.js'
 
 author:
   name: '团子'
-  email: sep@aya.yale.edu
+#  email: sep@aya.yale.edu
 # mastodon: tzuehlke@mstdn.social
 #  twitter_username: thomzuehlke
 #  facebook_username: joshgerdes
-  github_username:  sepbigo
+# github_username:  sepbigo
 #  linkedin_username:  thomas-zühlke-889182165
 #  meetup_name: Azure-Meetup-Rostock-MV
 
