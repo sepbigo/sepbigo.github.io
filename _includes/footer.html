@@ -1,14 +1,10 @@
-<footer class="footer">
-  <span class="footer__copyright">&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}. All rights reserved.</span>
-</footer>
+<!-- footer.html -->
+<body>
+    <!-- 页面内容... -->
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="{{ site.baseurl }}/js/main.js?{{site.time | date: '%s%N'}}"></script>
-<script type="text/javascript" src="{{ site.baseurl }}/js/github_api.js?{{site.time | date: '%s%N'}}"></script>
-<!-- 在footer.html中添加 -->
-<div class="bottom-player" id="musicPlayer">
-    <!-- 播放器完整HTML结构 -->
-</div>
-
-<!-- 放在footer.html最底部 -->
-<script src="/js/music-player.js"></script>
+    <!-- 播放器结构 -->
+    <div class="bottom-player">...</div>
+    
+    <!-- 脚本引入 -->
+    <script src="/js/music-player.js"></script>
+</body>
