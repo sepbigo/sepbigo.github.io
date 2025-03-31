@@ -6,7 +6,7 @@ const musicFiles = [
 
 let currentTrack = 0;
 let audio = new Audio();
-let isPlaying = false;
+let isPlaying = true;
 
 // 初始化播放器
 function initPlayer() {
@@ -22,6 +22,12 @@ function initPlayer() {
         const pos = (e.clientX - rect.left) / rect.width;
         audio.currentTime = pos * audio.duration;
     };
+
+    document.getElementById('progress-container').addEventListener('click', function(e) {
+    const rect = this.getBoundingClientRect();
+    const percentage = (e.clientX - rect.left) / rect.width;
+    audio.currentTime = audio.duration * percentage;
+});
 
     audio.onended = nextTrack;
 }
