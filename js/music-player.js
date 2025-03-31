@@ -56,5 +56,10 @@ document.getElementById('playerContainer').addEventListener('touchend', (e) => {
     audio.onended = nextTrack;
 }
 
+// 播放器控制逻辑
+let audio = new Audio();
+function togglePlay() { /* ... */ }
+// 其他函数...
+
 // 页面加载后初始化
 document.addEventListener('DOMContentLoaded', initPlayer);
