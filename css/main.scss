@@ -59,7 +59,18 @@ pre.highlight code,
   border-radius:100%;
 }
 
-/* 底部播放器样式 */
-.bottom-player { /* ... */ }
-.progress-container { /* ... */ }
-/* 其他播放器相关样式 */
+/* css/main.css */
+
+/* 其他通用样式之后添加 */
+.bottom-player {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    /* 其余样式... */
+}
+
+/* 进度条样式 */
+.progress-container {
+    /* ... */
+}
