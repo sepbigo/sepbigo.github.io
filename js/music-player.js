@@ -20,3 +20,15 @@ function nextTrack() { /* ... */ }
 
 // 页面加载初始化
 window.addEventListener('DOMContentLoaded', initPlayer);
+
+// 在music-player.js中添加
+// 读取保存的状态
+if(localStorage.getItem('volume')) {
+    audio.volume = localStorage.getItem('volume');
+}
+
+// 保存状态
+function setVolume(val) {
+    localStorage.setItem('volume', val);
+    audio.volume = val;
+}
