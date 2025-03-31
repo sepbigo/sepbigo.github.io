@@ -29,6 +29,31 @@ function initPlayer() {
     audio.currentTime = audio.duration * percentage;
 });
 
+// 添加键盘控制
+document.addEventListener('keydown', (e) => {
+    switch(e.key) {
+        case ' ':
+            togglePlay();
+            break;
+        case 'ArrowRight':
+            skip(10);
+            break;
+        case 'ArrowLeft':
+            skip(-10);
+            break;
+    }
+});
+
+// 添加触摸设备支持
+let lastTap = 0;
+document.getElementById('playerContainer').addEventListener('touchend', (e) => {
+    const currentTime = new Date().getTime();
+    if (currentTime - lastTap < 300) { // 双击显示
+        document.getElementById('playerContainer').classList.remove('player-hidden');
+    }
+    lastTap = currentTime;
+});
+
     audio.onended = nextTrack;
 }
 
