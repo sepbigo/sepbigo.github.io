@@ -92,5 +92,19 @@ function setVolume(value) {
     audio.volume = value;
 }
 
+// 在音频控制函数区域
+function toggleMute() {
+    audio.muted = !audio.muted;
+    document.getElementById('muteIcon').textContent = 
+        audio.muted ? '🔇' : '🔊';
+}
+
+// 初始化时同步状态
+function initPlayer() {
+    // 已有初始化代码...
+    document.getElementById('muteIcon').textContent = 
+        audio.muted ? '🔇' : '🔊';
+}
+
 // 页面加载后初始化
 document.addEventListener('DOMContentLoaded', initPlayer);
