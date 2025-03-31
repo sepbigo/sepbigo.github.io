@@ -1,8 +1,8 @@
 # projects section data
-- name: A repo with workflow, that downloads the current Pay-As-You-Go prices from Azure once a month and saves them in ~40MB files
-  gh_user: tzuehlke
-  repo: AzurePAYGPrices
-  img: https://blog.zuehlke.cloud/wp-content/uploads/2024/04/AzureCostExportPAYG-Overview-945x293.png
+- name: 我的探针
+  gh_user: 团子
+  url: https://vps.ikun.su/
+  img: https://dash.cecily.eu.org/file/AgACAgUAAyEGAASEFP0qAANTZ-rmQVrcNZ61pR2OlQsItcSDAgUAAt3IMRuMLFBXtHbxIfqhm_IBAAMCAAN5AAM2BA.jpeg
 
 - name: A regular rebuild and hosting of the TOR snowflake project (to provide access to censored websites)
   gh_user: tzuehlke
