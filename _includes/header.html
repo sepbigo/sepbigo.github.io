@@ -107,10 +107,16 @@
     <div class="player-content">
         <span id="nowPlaying"></span>
         <div class="controls">
-            <button class="ctrl-btn" onclick="previousTrack()">←</button>
-            <button class="ctrl-btn" id="playButton" onclick="togglePlay()">←→</button>
-            <button class="ctrl-btn" onclick="nextTrack()">→</button>
+            <button class="ctrl-btn" onclick="previousTrack()">▲</button>
+            <button class="ctrl-btn" id="playButton" onclick="togglePlay()">♫</button>
+            <button class="ctrl-btn" onclick="nextTrack()">▼</button>
         </div>
+        <div class="controls-group">
+    <!-- 已有按钮... -->
+    <button class="ctrl-btn" onclick="toggleMute()">
+        <span id="muteIcon">🔊</span>
+    </button>
+</div>
     </div>
     <div class="auto-progress" id="progressBar"></div>
 </div>
