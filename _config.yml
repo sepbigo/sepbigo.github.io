@@ -1,22 +1,22 @@
 # Site settings
-title: Thomas Zühlke
-description: 'Business Card Page'
-url: 'https://www.zuehlke.cloud'
+title: 春田花花疯人院
+description: '院长团子的主页'
+url: 'https://page.ikun.su'
 baseurl: ''
-profilepic: '/images/tzuehlke.jpg'
+profilepic: '/images/IMG_3541.gif'
 bkimage: '/images/bk1.jpg'
 google_analytics: UA-XXXXXX-X
 font_awesome: 'XXXXXXXXXX.js'
 
 author:
-  name: 'Thomas Zühlke'
-  email: thomas@zuehlke.cloud
-  mastodon: tzuehlke@mstdn.social
-  twitter_username: thomzuehlke
+  name: '团子'
+  email: sep@aya.yale.edu
+# mastodon: tzuehlke@mstdn.social
+#  twitter_username: thomzuehlke
 #  facebook_username: joshgerdes
-  github_username:  tzuehlke
-  linkedin_username:  thomas-zühlke-889182165
-  meetup_name: Azure-Meetup-Rostock-MV
+  github_username:  sepbigo
+#  linkedin_username:  thomas-zühlke-889182165
+#  meetup_name: Azure-Meetup-Rostock-MV
 
 # Build settings
 destination: _site
