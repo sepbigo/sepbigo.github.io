@@ -1,23 +1,32 @@
 // 文件位置：js/player.js 
+const audio = document.getElementById('audioPlayer');
+const playPauseBtn = document.getElementById('playPauseBtn');
+const playerContainer = document.querySelector('.player-container');
+const cover = document.getElementById('cover');
 
-// 修改缩放函数
-function adjustPlayerSize() {
-    const player = document.querySelector('.player-container');
-    const screenWidth = window.innerWidth;
-    
-    if (screenWidth < 400) {
-        player.style.transform = 'translateX(-50%) scale(0.65)'; // 更极致的缩放
-    } else if (screenWidth < 768) {
-        player.style.transform = 'translateX(-50%) scale(0.7)';
-    } else {
-        player.style.transform = 'translateX(-50%) scale(0.8)';
-    }
-}
+// 控制旋转动画
+audio.addEventListener('play', () => {
+    playerContainer.style.animationPlayState = 'running';
+    playPauseBtn.textContent = '⏸'; // 暂停符号
+});
 
-// 在原有触摸事件处理函数中添加防误触
-let isTouching = false;
-function handleProgressTouch(e) {
-    isTouching = true;
-    // ...原有逻辑...
-    isTouching = false;
+audio.addEventListener('pause', () => {
+    playerContainer.style.animationPlayState = 'paused';
+    playPauseBtn.textContent = '▶'; // 播放符号
+});
+
+// 点击封面切换音乐
+cover.addEventListener('click', () => {
+    audio.paused ? audio.play() : audio.pause();
+});
+
+// 初始化点击事件
+document.addEventListener('click', function initAudio() {
+    audio.play();
+    document.removeEventListener('click', initAudio);
+}, { once: true });
+
+// 更换封面示例代码（需自行实现文件上传逻辑）
+function changeCover(newCoverUrl) {
+    cover.src = newCoverUrl;
 }
