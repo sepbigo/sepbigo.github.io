@@ -10,10 +10,28 @@ audio.addEventListener('play', () => {
     playPauseBtn.textContent = 'Pause'; // 暂停符号
 });
 
-audio.addEventListener('pause', () => {
-    playerContainer.style.animationPlayState = 'paused';
-    playPauseBtn.textContent = 'Play'; // 播放符号
+// 文件位置：js/player.js 
+
+// 修改初始化代码 (约第12行)
+document.addEventListener('DOMContentLoaded', function() {
+    // 自动播放尝试
+    const playPromise = audio.play().catch(() => {
+        // 如果自动播放被阻止，显示点击提示
+        playerContainer.style.cursor = 'pointer';
+        playerContainer.title = 'Click to start music';
+    });
+
+    // 设置循环播放
+    audio.loop = true;  // 确保循环
+    
+    // 保留点击播放逻辑
+    playerContainer.addEventListener('click', function initPlay() {
+        audio.play();
+        this.removeEventListener('click', initPlay);
+    }, { once: true });
 });
+
+// 保持原有播放/暂停逻辑不变
 
 // 点击封面切换音乐
 cover.addEventListener('click', () => {
