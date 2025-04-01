@@ -1,96 +1,53 @@
+/* 文件位置：css/style.css */
+
 .player-container {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(40, 40, 40, 0.8);
-    padding: 15px;
-    border-radius: 10px;
-    backdrop-filter: blur(5px);
-    width: 80%;
-    max-width: 600px;
-    z-index: 1000;
+    background: rgba(40, 40, 40, 0.6); /* 进一步降低透明度 */
+    padding: 8px;  /* 减少内边距 */
+    max-width: 400px; /* 最大宽度减半 */
+    border-radius: 6px; /* 更小的圆角 */
+    transform: translateX(-50%) scale(0.8); /* 初始缩放 */
 }
 
 .controls {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+    gap: 8px; /* 控件间距缩小 */
 }
 
 button {
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-button:hover {
-    background: rgba(255, 255, 255, 0.2);
+    padding: 6px 12px; /* 按钮尺寸缩小 */
+    font-size: 12px; /* 字体缩小 */
 }
 
 input[type="range"] {
-    flex-grow: 1;
-    height: 4px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 2px;
-}
-
-#volume {
-    width: 80px;
+    height: 3px; /* 更细的进度条 */
 }
 
 #time, #volumeLabel {
-    color: white;
-    font-family: Arial, sans-serif;
-    font-size: 0.9em;
-    min-width: 90px;
-}
-
-.player-container {
-    /* 修改透明度从0.8→0.5 */
-    background: rgba(40, 40, 40, 0.5);
-    padding: 12px;
-    width: 90%; /* 更宽的默认宽度 */
-    max-width: 800px;
-    bottom: 10px; /* 降低底部间距 */
+    font-size: 11px; /* 时间文字缩小 */
+    min-width: 70px;
 }
 
 /* 手机端适配 */
 @media (max-width: 768px) {
     .player-container {
-        width: 95%;
-        padding: 8px;
-        border-radius: 8px;
-    }
-    
-    .controls {
-        gap: 10px;
-        flex-wrap: wrap;
+        transform: translateX(-50%) scale(0.7); /* 移动端额外缩放 */
+        width: 85%;
+        padding: 6px;
     }
     
     button {
-        padding: 10px 20px; /* 更大的点击区域 */
-        font-size: 14px;
+        padding: 8px 16px; /* 保持可点击区域 */
+        font-size: 11px;
     }
     
     input[type="range"] {
-        height: 6px; /* 更粗的进度条 */
-    }
-    
-    #time, #volumeLabel {
-        font-size: 12px;
-        min-width: 80px;
+        height: 4px; /* 移动端保持可操作性 */
     }
 }
 
 /* 平板适配 */
 @media (min-width: 769px) and (max-width: 1024px) {
     .player-container {
-        max-width: 700px;
-        padding: 10px;
+        transform: translateX(-50%) scale(0.75);
+        max-width: 350px;
     }
 }
