@@ -42,33 +42,21 @@ robots: noindex
     </li> -->
   </ul>
   
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Music Player</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <div class="player-container">
-        <audio id="audioPlayer" autoplay>
-            <source src="assets/范文芳 - 示情.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
-        
-        <div class="controls">
-            <button id="playPauseBtn">Play</button>
-            <input type="range" id="progress" value="0">
-            <span id="time">0:00 / 0:00</span>
-            <input type="range" id="volume" min="0" max="1" step="0.1" value="1">
-            <span id="volumeLabel">Volume</span>
-        </div>
+ <!-- 文件位置：index.html -->
+<div class="player-container">
+    <audio id="audioPlayer" autoplay>
+        <source src="assets/范文芳 - 示情.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- 新增封面容器 -->
+    <div class="album-art">
+        <img src="assets/cover.jpg" id="cover" alt="Album Cover">
     </div>
-
-    <script src="js/player.js"></script>
-</body>
-</html>
+    
+    <div class="controls">
+        <button id="playPauseBtn">Play</button>  <!-- 使用符号代替文字 -->
+    </div>
+</div>
 
 <!--</div>-->
 
