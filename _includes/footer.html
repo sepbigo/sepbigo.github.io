@@ -1,10 +1,7 @@
-<!-- footer.html -->
-<body>
-    <!-- 页面内容... -->
+<footer class="footer">
+  <span class="footer__copyright">&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}. All rights reserved.</span>
+</footer>
 
-    <!-- 播放器结构 -->
-    <div class="bottom-player">...</div>
-    
-    <!-- 脚本引入 -->
-    <script src="/js/music-player.js"></script>
-</body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="{{ site.baseurl }}/js/main.js?{{site.time | date: '%s%N'}}"></script>
+<script type="text/javascript" src="{{ site.baseurl }}/js/github_api.js?{{site.time | date: '%s%N'}}"></script>
