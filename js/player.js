@@ -44,3 +44,41 @@ progress.addEventListener('input', (e) => {
 volume.addEventListener('input', (e) => {
     audio.volume = e.target.value;
 });
+
+// 在原有代码基础上添加以下内容
+
+// 移动端触摸事件支持
+progress.addEventListener('touchstart', handleProgressTouch);
+progress.addEventListener('touchmove', handleProgressTouch);
+
+volume.addEventListener('touchstart', handleVolumeTouch);
+volume.addEventListener('touchmove', handleVolumeTouch);
+
+function handleProgressTouch(e) {
+    const rect = progress.getBoundingClientRect();
+    const percent = (e.touches[0].clientX - rect.left) / rect.width;
+    progress.value = percent * 100;
+    audio.currentTime = percent * audio.duration;
+}
+
+function handleVolumeTouch(e) {
+    const rect = volume.getBoundingClientRect();
+    const value = (e.touches[0].clientX - rect.left) / rect.width;
+    volume.value = Math.min(Math.max(value, 0), 1);
+    audio.volume = volume.value;
+}
+
+// 自动缩放处理
+function adjustPlayerSize() {
+    const player = document.querySelector('.player-container');
+    const screenWidth = window.innerWidth;
+    
+    if (screenWidth < 400) {
+        player.style.transform = 'translateX(-50%) scale(0.9)';
+    } else {
+        player.style.transform = 'translateX(-50%)';
+    }
+}
+
+window.addEventListener('resize', adjustPlayerSize);
+adjustPlayerSize(); // 初始化
