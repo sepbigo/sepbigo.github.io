@@ -7,12 +7,12 @@ const cover = document.getElementById('cover');
 // 控制旋转动画
 audio.addEventListener('play', () => {
     playerContainer.style.animationPlayState = 'running';
-    playPauseBtn.textContent = '⏸'; // 暂停符号
+    playPauseBtn.textContent = 'Pause'; // 暂停符号
 });
 
 audio.addEventListener('pause', () => {
     playerContainer.style.animationPlayState = 'paused';
-    playPauseBtn.textContent = '▶'; // 播放符号
+    playPauseBtn.textContent = 'Play'; // 播放符号
 });
 
 // 点击封面切换音乐
