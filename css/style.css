@@ -49,3 +49,48 @@ input[type="range"] {
     font-size: 0.9em;
     min-width: 90px;
 }
+
+.player-container {
+    /* 修改透明度从0.8→0.5 */
+    background: rgba(40, 40, 40, 0.5);
+    padding: 12px;
+    width: 90%; /* 更宽的默认宽度 */
+    max-width: 800px;
+    bottom: 10px; /* 降低底部间距 */
+}
+
+/* 手机端适配 */
+@media (max-width: 768px) {
+    .player-container {
+        width: 95%;
+        padding: 8px;
+        border-radius: 8px;
+    }
+    
+    .controls {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    
+    button {
+        padding: 10px 20px; /* 更大的点击区域 */
+        font-size: 14px;
+    }
+    
+    input[type="range"] {
+        height: 6px; /* 更粗的进度条 */
+    }
+    
+    #time, #volumeLabel {
+        font-size: 12px;
+        min-width: 80px;
+    }
+}
+
+/* 平板适配 */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .player-container {
+        max-width: 700px;
+        padding: 10px;
+    }
+}
