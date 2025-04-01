@@ -1,53 +1,80 @@
 /* 文件位置：css/style.css */
-
 .player-container {
-    background: rgba(40, 40, 40, 0.6); /* 进一步降低透明度 */
-    padding: 8px;  /* 减少内边距 */
-    max-width: 400px; /* 最大宽度减半 */
-    border-radius: 6px; /* 更小的圆角 */
-    transform: translateX(-50%) scale(0.8); /* 初始缩放 */
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(40, 40, 40, 0.7);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: rotate 20s linear infinite;
+    animation-play-state: paused; /* 初始状态暂停 */
+}
+
+/* 旋转动画 */
+@keyframes rotate {
+    from { transform: translateX(-50%) rotate(0deg); }
+    to { transform: translateX(-50%) rotate(360deg); }
+}
+
+.album-art {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+}
+
+#cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
 }
 
 .controls {
-    gap: 8px; /* 控件间距缩小 */
+    position: relative;
+    z-index: 2;
 }
 
 button {
-    padding: 6px 12px; /* 按钮尺寸缩小 */
-    font-size: 12px; /* 字体缩小 */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s;
 }
 
-input[type="range"] {
-    height: 3px; /* 更细的进度条 */
+button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
 }
 
-#time, #volumeLabel {
-    font-size: 11px; /* 时间文字缩小 */
-    min-width: 70px;
-}
-
-/* 手机端适配 */
+/* 手机适配 */
 @media (max-width: 768px) {
     .player-container {
-        transform: translateX(-50%) scale(0.7); /* 移动端额外缩放 */
-        width: 85%;
-        padding: 6px;
+        width: 100px;
+        height: 100px;
+        bottom: 15px;
+    }
+    
+    .album-art {
+        width: 85px;
+        height: 85px;
     }
     
     button {
-        padding: 8px 16px; /* 保持可点击区域 */
-        font-size: 11px;
-    }
-    
-    input[type="range"] {
-        height: 4px; /* 移动端保持可操作性 */
-    }
-}
-
-/* 平板适配 */
-@media (min-width: 769px) and (max-width: 1024px) {
-    .player-container {
-        transform: translateX(-50%) scale(0.75);
-        max-width: 350px;
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
     }
 }
