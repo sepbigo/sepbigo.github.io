@@ -58,3 +58,19 @@ pre.highlight code,
   border: 3px solid #fff;
   border-radius:100%;
 }
+
+/* 花瓣样式和动画 */
+.sakura-petal {
+    position: fixed;
+    width: 15px;
+    height: 15px;
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M15 3 Q16 0 20 3 T25 7 T27 14 T15 27 T3 14 T5 7 T10 3 Q14 0 15 3" fill="%23ff9a9a"/></svg>');
+    pointer-events: none; /* 确保可点击页面元素 */
+    z-index: -1; /* 花瓣在内容下方 */
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-10vh) rotate(0deg); }
+    100% { transform: translateY(110vh) rotate(360deg); }
+}
